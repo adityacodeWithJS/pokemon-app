@@ -7,11 +7,8 @@ import PokemonCard from "./components/PokemonCard"
 import Home from './components/Home';
 import TextInput from './components/Input/TextInput';
 import SelectInput from './components/Input/SelectInput';
+import { Pokemeon } from './interface/types'
 
-interface Pokemeon {
-  name: string;
-  url: string;
-}
 
 const LandingPage = () => {
 

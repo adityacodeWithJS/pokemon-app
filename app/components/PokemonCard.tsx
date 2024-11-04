@@ -1,13 +1,10 @@
+import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-type Pokemeon = {
-  id: number;
-  name: string;
-  imageUrl: string;
-}
+import {PokemeonCard} from "../interface/types"
 
+const pokemonCard = ({ id, name, imageUrl }: PokemeonCard) => {
 
-const pokemonCard = ({ id, name, imageUrl }: Pokemeon) => {
   return (
     <Link href={`/pokemon/${id}`}>
       <div className="bg-white shadow-lg rounded-lg transform transition duration-300 hover:scale-105">
