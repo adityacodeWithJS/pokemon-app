@@ -3,6 +3,7 @@ import PokemonCard from "./PokemonCard"
 import React from "react";
 
 const Home = ({pokemonList}:any) => {
+    
 return <>
 <div className='grid grid-cols-1 sm:grid-cols-4  gap-3 m-5'>
         {

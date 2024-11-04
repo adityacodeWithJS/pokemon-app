@@ -1,7 +1,6 @@
 
 'use client'
 import axios from 'axios'
-
 import { useRouter,useParams } from 'next/navigation'
 import { useEffect, useState } from 'react';
 import PokemonCard from "../../components/PokemonCard"
@@ -41,7 +40,6 @@ const DetailsPage = () => {
                 Back
             </button>
             <div className='max-w-sm  bg-white '>
-
                 <PokemonCard
                     id={parseInt(id)}
                     name={pokemon.name.toUpperCase()}
