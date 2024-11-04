@@ -4,13 +4,16 @@ import React, { useState, useEffect, useRef } from 'react'
 import axios from 'axios';
 import debounce from 'lodash/debounce'
 import PokemonCard from "./components/PokemonCard"
+import Home from './components/Home';
+import TextInput from './components/Input/TextInput';
+import SelectInput from './components/Input/SelectInput';
 
 interface Pokemeon {
   name: string;
   url: string;
 }
 
-const Home = () => {
+const LandingPage = () => {
 
   const [pokemonList, setPokeMonList] = useState<Pokemeon[]>([]);
   const [allPokemonList, setAllPokeMonList] = useState<Pokemeon[]>([]);
@@ -37,7 +40,6 @@ const Home = () => {
     //Filter Data Consume
     const uniqueTypes = pokemonResults.map((pokemon: Pokemeon) => pokemon.name)
     setPokemonTypes(uniqueTypes)
-    console.log("pokemonResults", pokemonResults, uniqueTypes)
     setLoading(false)
   }
 
@@ -52,7 +54,7 @@ const Home = () => {
         if (pokemon.name === filterType)
           return pokemon
       })
-      console.log("filterPokemons", filterPokemons)
+    
     }
 
     if (itemSearchKey) {
@@ -64,11 +66,11 @@ const Home = () => {
   }, 500)
 
 
-  const fetchPokemonTypes = async () => {
-    const response = await axios.get(`https://pokeapi.co/api/v2/type/`);
-    //  setPokemonTypes(response.data.results)
-    console.log("Response", response.data.results)
-  }
+  // const fetchPokemonTypes = async () => {
+  //   const response = await axios.get(`https://pokeapi.co/api/v2/type/`);
+  //   //  setPokemonTypes(response.data.results)
+  //   console.log("Response", response.data.results)
+  // }
 
   useEffect(() => {
     const observer = new IntersectionObserver((allItems) => {
@@ -111,54 +113,32 @@ const Home = () => {
   return (
     <div>
       <div className='w-1/2 flex gap-3 mx-auto max-w-2xl p-2'>
-        <input type='text' placeholder='Search Pokemeon...'
-          value={searchItem}
-          onChange={handleSearchInputChange}
-          className='p-2 mb-4 border rounded w-full'
+
+       <TextInput
+        value={searchItem}
+        onChange={handleSearchInputChange}
+        className='p-2 mb-4 border rounded w-full'
+        placeholder='Search Item'
         />
-        <select
-          value={selectedType}
-          onChange={handleFilterChange}
-          className='
-        focus:ring-2
-        p-2 mb-4 border border-gray-300 rounded-lg shadow-sm w-full
-         text-gray-700
-       '
 
-        >
-          <option
-            value=""
-            className='text-gray-500'
-          >All Types</option>
-
-          {pokemonTypes.length &&
-            pokemonTypes.map((type, index) => {
-              return <option
-                key={type}
-                value={type}
-                className='text-gray-700'
-              >
-                {type}
-              </option>
-            })
-
-          }
-        </select>
+       <SelectInput
+         value={selectedType}
+         onChange={handleFilterChange}
+         options={pokemonTypes}
+         className='
+         focus:ring-2
+         p-2 mb-4 border border-gray-300 rounded-lg shadow-sm w-full
+          text-gray-700
+        '
+        />
+      
       </div>
-      <div className='grid grid-cols-1 sm:grid-cols-4  gap-3 m-5'>
-        {
-          pokemonList.length > 0 &&
-          pokemonList.map((pokemon: any, index: number) => {
-            return (
-              <PokemonCard key={index + 'abc'} {...pokemon} />
-            )
-          })
-        }
-      </div>
+  
+      {pokemonList.length > 0 && <Home pokemonList={pokemonList}  />}
 
       <div ref={observerRef} className='h-4'></div>
     </div>
   )
 }
 
-export default Home
+export default LandingPage
