@@ -1,0 +1,1 @@
+export const printName=() :string => 'Aditya' 

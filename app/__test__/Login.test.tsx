@@ -2,9 +2,9 @@ import { fireEvent, render, screen } from "@testing-library/react";
 import React from "react";
 import '@testing-library/jest-dom';
 import Login from "../Login";
-
+import { printName } from "../utils/printName";
 describe('Login Form', () => {
-    test('Login Form', () => {
+    test('input', () => {
        const loginComponent= render(<Login />)
        expect(loginComponent).toMatchSnapshot()
         const loginText = screen.getByText(/login/i)
@@ -31,5 +31,8 @@ describe('Login Form', () => {
         const btn= screen.getByRole("button");
         fireEvent.click(btn)
         expect(screen.getByText("Update Button")).toBeInTheDocument()
+    })
+    test('Functional Test',()=>{
+     expect(printName()).toMatch('Aditya')
     })
 })
