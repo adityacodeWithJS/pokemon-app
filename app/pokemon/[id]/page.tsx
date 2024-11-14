@@ -31,8 +31,7 @@ const DetailsPage = () => {
     if (!pokemon) return <div>..Loading</div>
 
     return (
-        <div  className='md:flex flex-col  m-5 gap-4 justify-center'>
-
+        <div  className='flex flex-col   m-5 gap-4 justify-center align-middle'>
             <button onClick={handleBackToHome}
                 className='mt-4 max-w-[100px]  px-4 bg-blue-300 
                 text-white rounded hover:bg-blue-500 '

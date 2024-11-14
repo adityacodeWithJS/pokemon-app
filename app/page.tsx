@@ -8,6 +8,7 @@ import Home from './components/Home';
 import TextInput from './components/Input/TextInput';
 import SelectInput from './components/Input/SelectInput';
 import { Pokemeon } from './interface/types'
+import Login from './Login';
 
 
 const LandingPage = () => {
@@ -44,6 +45,9 @@ const LandingPage = () => {
     setPage((prevPage) => prevPage + 1)
   }
 
+  /* It will be call after certain time and take
+  @params : params serahKey:string or filterType:string */
+
   const handleFilterSearch = debounce((itemSearchKey: string, filterType: string) => {
     let filterPokemons = allPokemonList
     if (filterType) {
@@ -59,7 +63,9 @@ const LandingPage = () => {
         return pokemon.name.toLowerCase().includes(itemSearchKey.toLowerCase())
       })
     }
+   
     setPokeMonList(filterPokemons)
+  //  setSelectedTypes(filterType)
   }, 500)
 
 
@@ -110,7 +116,7 @@ const LandingPage = () => {
   return (
     <div>
       <div className='w-1/2 flex gap-3 mx-auto max-w-2xl p-2'>
-
+      <Login/>
        <TextInput
         value={searchItem}
         onChange={handleSearchInputChange}
@@ -131,7 +137,7 @@ const LandingPage = () => {
       
       </div>
   
-      {pokemonList.length > 0 && <Home pokemonList={pokemonList}  />}
+      {pokemonList.length  && <Home pokemonList={pokemonList}  />}
 
       <div ref={observerRef} className='h-4'></div>
     </div>

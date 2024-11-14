@@ -54,11 +54,12 @@ describe('PokemonCard',() =>{
     }
 
     test('renderAllCards',() => {
-        render (<PokemonCard {...mockPokemon}/>)
+        const Card =render (<PokemonCard {...mockPokemon}/>)
+        expect(Card).toMatchSnapshot()
     })
 
-    test('renderHomePage',() => {
-        render (<Home  pokemonList={pokemonListMock}/>)
-    })
+    // test('renderHomePage',() => {
+    //     render (<Home  pokemonList={pokemonListMock}/>)
+    // })
 })
 

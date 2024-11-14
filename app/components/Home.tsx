@@ -5,7 +5,7 @@ import React from "react";
 const Home = ({pokemonList}:any) => {
     
 return <>
-<div className='grid grid-cols-1 sm:grid-cols-4  gap-3 m-5'>
+<div className='grid grid-cols-1 align-middle sm:grid-cols-4  gap-3 m-5'>
         {
           pokemonList.length > 0 &&
           pokemonList.map((pokemon: PokemeonCard, index: number) => {
