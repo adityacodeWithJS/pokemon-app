@@ -18,7 +18,7 @@ describe ('Counter Component Render',()=>{
         expect(screen.getByTestId('counter-value')).toHaveTextContent('Count: 1');
       })
 
-      test ('decrements the counter value when the decrements button is clicked',()=>{
+      test ('decrements the counter value when the decrements button is clicked', ()=>{
         render(<Counter/>)
         fireEvent.click(screen.getByTestId('decrement-button'))
         expect(screen.getByTestId('counter-value')).toHaveTextContent('Count: -1');
